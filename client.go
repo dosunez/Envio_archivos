@@ -141,9 +141,8 @@ func main() {
 	c.On("/file", func(h *gosocketio.Channel, args Message) {
 		if clientName != args.Sender {
 			route := "./" + clientName + "/" + args.Name
-			os.Mkdir(clientName, 0644)
-			println(route)
-			ioutil.WriteFile(route, args.File, 0644)
+			os.Mkdir(clientName, 0777)
+			ioutil.WriteFile(route, args.File, 0777)
 		}
 	})
 	showMenu(c)
